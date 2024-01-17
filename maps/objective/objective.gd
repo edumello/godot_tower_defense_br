@@ -1,0 +1,21 @@
+extends Area2D
+
+@export var health := 50:
+	set = set_health
+
+
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D as CollisionShape2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D as AnimatedSprite2D
+
+func set_health(value: int) -> void:
+	health = max(0, value)
+	if health == 0:
+		collision_shape.set_deferred("disabled", true)
+		anim_sprite.play("die")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Infantry:
+		var infantry = body as Infantry
+		health -= infantry.objective_damage
+		infantry.queue_free()

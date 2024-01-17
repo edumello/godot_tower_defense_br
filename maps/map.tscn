@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://s32acx757nf0"]
+[gd_scene load_steps=24 format=3 uid="uid://s32acx757nf0"]
 
 [ext_resource type="Script" path="res://maps/map.gd" id="1_odf5o"]
 [ext_resource type="Texture2D" uid="uid://pkom84cxawa8" path="res://assets/tiles/field_tilesheet.png" id="1_pj6wp"]
 [ext_resource type="PackedScene" uid="uid://dkh0hhtdhempd" path="res://maps/objective/objective.tscn" id="3_tj0ji"]
 [ext_resource type="PackedScene" uid="uid://qsqld1xtmttp" path="res://maps/camera/camera2D.tscn" id="4_83ee1"]
 [ext_resource type="PackedScene" uid="uid://d88njoad6kww" path="res://maps/spawner/spawner.tscn" id="5_fkdgc"]
+[ext_resource type="PackedScene" uid="uid://byp88f246vd2e" path="res://entities/towers/tower.tscn" id="6_8p8es"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fmq7g"]
 vertices = PackedVector2Array(32, 64, -64, 64, -64, -64, 36, 39, 64, -64, 64, 32)
@@ -210,9 +211,6 @@ position = Vector2(953, 539)
 
 [node name="Spawner" parent="." instance=ExtResource("5_fkdgc")]
 position = Vector2(103, 107)
-spawn_rate = 2.0
-wave_count = 3
-enemies_per_wave_count = 10
 
 [node name="SpawnLocation1" parent="Spawner/SpawnContainer" index="0"]
 position = Vector2(-35, 10)
@@ -222,5 +220,17 @@ position = Vector2(1824, 2651)
 
 [node name="SpawnLocation3" parent="Spawner/SpawnContainer" index="2"]
 position = Vector2(-25, 2213)
+
+[node name="Tower" parent="." instance=ExtResource("6_8p8es")]
+position = Vector2(2165, 2014)
+
+[node name="Tower2" parent="." instance=ExtResource("6_8p8es")]
+position = Vector2(889, 750)
+
+[node name="Tower3" parent="." instance=ExtResource("6_8p8es")]
+position = Vector2(3553, 1598)
+
+[node name="Tower4" parent="." instance=ExtResource("6_8p8es")]
+position = Vector2(1013, 1525)
 
 [editable path="Spawner"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://byp88f246vd2e"]
+
+[ext_resource type="Texture2D" uid="uid://dfekbdfiamvpk" path="res://assets/towers/gatling/tier1/base_idle_00.png" id="1_sdco7"]
+[ext_resource type="PackedScene" uid="uid://b2yo7rmvf4ir8" path="res://entities/shooter.tscn" id="2_oxqam"]
+[ext_resource type="PackedScene" uid="uid://c7emb8w7nldom" path="res://entities/projectiles/projectile.tscn" id="3_2w0g8"]
+[ext_resource type="AudioStream" uid="uid://cr634uwxgmrlp" path="res://assets/sounds/gatling.wav" id="3_m6svd"]
+
+[node name="Tower" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 33
+
+[node name="Foundation" type="Sprite2D" parent="."]
+texture = ExtResource("1_sdco7")
+
+[node name="Shooter" parent="." instance=ExtResource("2_oxqam")]
+rot_speed = 10.0
+projectile_type = ExtResource("3_2w0g8")
+projectile_damage = 5
+
+[node name="MuzzleFlash" parent="Shooter" index="1"]
+position = Vector2(68, 0)
+
+[node name="ShootSound" parent="Shooter" index="2"]
+stream = ExtResource("3_m6svd")
+
+[editable path="Shooter"]
