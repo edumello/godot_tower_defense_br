@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dscayxgx6aulu"]
+[gd_scene load_steps=5 format=3 uid="uid://dscayxgx6aulu"]
 
 [ext_resource type="Script" path="res://entities/enemies/enemy.gd" id="1_8i5xw"]
+[ext_resource type="Script" path="res://entities/state_machine.gd" id="2_k5bp0"]
+[ext_resource type="Script" path="res://entities/enemies/states/move_state.gd" id="3_uxanh"]
+[ext_resource type="Script" path="res://entities/enemies/states/die_state.gd" id="4_u0s7f"]
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_8i5xw")
@@ -14,5 +17,15 @@ autoplay = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 100.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("start_state")]
+script = ExtResource("2_k5bp0")
+start_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("3_uxanh")
+
+[node name="Die" type="Node" parent="StateMachine"]
+script = ExtResource("4_u0s7f")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

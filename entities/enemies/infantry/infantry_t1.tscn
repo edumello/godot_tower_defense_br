@@ -96,8 +96,10 @@ objective_damage = 10
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_hfdm2")
-animation = &"move"
+animation = &"die"
 autoplay = "move"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_2gdoh")

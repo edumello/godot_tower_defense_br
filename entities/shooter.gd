@@ -1,3 +1,4 @@
+class_name Shooter
 extends Node2D
 
 @export var fire_rate := 0.1
@@ -20,15 +21,16 @@ func _ready() -> void:
 	map = find_parent("Map")
 
 
-func _physics_process(delta: float) -> void:
+func _rotate_shooter(delta: float) -> void:
 	if not targets.is_empty():
 		var target_pos: Vector2 = targets.front().global_position
 		var target_rot: float =  global_position.direction_to(target_pos).angle()
 		rotation = lerp_angle(rotation, target_rot, rot_speed * delta)
-		
-		if can_shoot and lookahead.is_colliding():
-			shoot()
-			
+
+
+func should_shoot() -> bool:
+	return can_shoot and lookahead.is_colliding()
+
 
 func shoot() -> void:
 	can_shoot = false
@@ -37,6 +39,22 @@ func shoot() -> void:
 	_play_animations("shoot")
 	shoot_sound.play()
 	firerate_timer.start(fire_rate)
+	
+
+func die() -> void:
+	set_physics_process(false)
+	can_shoot = false
+	firerate_timer.stop()
+	muzzle_flash.hide()
+	gun.play("die")
+
+	
+func is_objective_in_range() -> bool:
+	for target in targets:
+		if target is Objective:
+			return true
+	return false
+	
 	
 func _instantiate_projectile(_position: Vector2) -> void:
 	var projectile: Projectile = projectile_type.instantiate()

@@ -56,7 +56,7 @@ script = ExtResource("1_w3qkb")
 sprite_frames = SubResource("SpriteFrames_8iq8t")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.167563
+frame_progress = 0.527396
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(27, 0)
@@ -76,6 +76,7 @@ stream = ExtResource("7_57ar4")
 wait_time = 10.0
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="HitVfx" to="." method="_on_hit_vfx_animation_finished"]
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

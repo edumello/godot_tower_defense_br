@@ -34,10 +34,16 @@ func _on_hit_vfx_animation_finished() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Enemy:
-		(body as Enemy).health -= damage
+	if body is Enemy or body is Tower:
+		body.health -= damage
 		_explode()
 
 
 func _on_lifetime_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is Objective:
+		area.health -= damage
+		_explode()
