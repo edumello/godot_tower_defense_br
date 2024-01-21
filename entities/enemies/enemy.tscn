@@ -29,3 +29,4 @@ script = ExtResource("3_uxanh")
 script = ExtResource("4_u0s7f")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

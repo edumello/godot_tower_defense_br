@@ -385,6 +385,8 @@ volume_db = -12.0
 
 [node name="NavigationAgent2D" parent="." index="3"]
 path_desired_distance = 50.0
+avoidance_enabled = true
+radius = 60.0
 
 [node name="Shooter" parent="." index="4" instance=ExtResource("32_6qksu")]
 fire_rate = 3.0
