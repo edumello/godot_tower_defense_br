@@ -1,4 +1,8 @@
+class_name Spawner
 extends Node2D
+
+signal countdown_started(seconds: float)
+signal wave_started(current_wave: int)
 
 @export_range(0.5, 5.0, 0.5) var spawn_rate : float = 2.0
 @export var wave_count := 3
@@ -25,10 +29,14 @@ func _ready() -> void:
 		spawn_locations.append(marker)
 	wave_timer.start()
 
+	await owner.ready #wait for parent node to be ready, allowing it to capture the signal
+	countdown_started.emit(wave_timer.time_left)
+
 func _start_wave() -> void:
 	current_wave += 1
 	spawn_timer.start()
 	current_enemy_count = 0
+	wave_started.emit(current_wave)
 
 func _on_wave_timer_timeout() -> void:
 	_start_wave() 
@@ -43,6 +51,7 @@ func _spawn_new_enemy(enemy_name: String) -> void:
 func _end_wave() -> void:
 	if current_wave < wave_count:
 		wave_timer.start()
+		countdown_started.emit(wave_timer.time_left)
 		
 		
 func _pick_enemy() -> String:

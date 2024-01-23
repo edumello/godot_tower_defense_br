@@ -7,6 +7,8 @@ extends Camera2D
 @export var fixed_toggle_point: Vector2
 
 @onready var target_zoom: float = zoom.x
+@onready var hud: HUD = $HUD
+
 
 #func _process(event: InputEvent) -> void:
 	#if event is InputEventMouseButton:

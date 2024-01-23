@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://glb4o5cx4f6x"]
+[gd_scene load_steps=18 format=3 uid="uid://glb4o5cx4f6x"]
 
 [ext_resource type="PackedScene" uid="uid://dscayxgx6aulu" path="res://entities/enemies/enemy.tscn" id="1_a022k"]
 [ext_resource type="Texture2D" uid="uid://ch3wt5nikk7ua" path="res://assets/enemies/infantry/tier1/die_00.png" id="2_1s0do"]
@@ -10,14 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bgkbh2crgb7nx" path="res://assets/enemies/infantry/tier1/die_05.png" id="7_mh6tw"]
 [ext_resource type="Texture2D" uid="uid://txkgkymswsjn" path="res://assets/enemies/infantry/tier1/die_06.png" id="8_y6byb"]
 [ext_resource type="Texture2D" uid="uid://cq6s12b4g8xwa" path="res://assets/enemies/infantry/tier1/idle_00.png" id="9_pkmpk"]
-[ext_resource type="Texture2D" uid="uid://clsx4s4jttt6" path="res://assets/enemies/infantry/tier1/move_00.png" id="10_8or24"]
-[ext_resource type="Texture2D" uid="uid://dwnsht5e10knt" path="res://assets/enemies/infantry/tier1/move_01.png" id="11_kv3i3"]
-[ext_resource type="Texture2D" uid="uid://bqce72sd00tum" path="res://assets/enemies/infantry/tier1/move_02.png" id="12_58dmk"]
-[ext_resource type="Texture2D" uid="uid://ce107s8x3bmn" path="res://assets/enemies/infantry/tier1/move_03.png" id="13_nxo5s"]
-[ext_resource type="Texture2D" uid="uid://biluxusr0f5kp" path="res://assets/enemies/infantry/tier1/move_04.png" id="14_lhpb3"]
-[ext_resource type="Texture2D" uid="uid://bxmxfgssfcnq1" path="res://assets/enemies/infantry/tier1/move_05.png" id="15_8aqr3"]
-[ext_resource type="Texture2D" uid="uid://cy2e688sdt8tg" path="res://assets/enemies/infantry/tier1/move_06.png" id="16_r0vnx"]
-[ext_resource type="Texture2D" uid="uid://cm3an73b20kry" path="res://assets/enemies/infantry/tier1/move_07.png" id="17_hrplu"]
+[ext_resource type="Texture2D" uid="uid://xhuuxiem3otk" path="res://assets/enemies/infantry/New folder/Andando0000.png" id="11_paxkr"]
+[ext_resource type="Texture2D" uid="uid://chdxiun626bco" path="res://assets/enemies/infantry/New folder/Andando0004.png" id="12_6vbko"]
+[ext_resource type="Texture2D" uid="uid://iml4kdwatrct" path="res://assets/enemies/infantry/New folder/Andando0008.png" id="13_xfcq2"]
+[ext_resource type="Texture2D" uid="uid://dn7oii3c6qltm" path="res://assets/enemies/infantry/New folder/Andando0012.png" id="14_vws2c"]
 [ext_resource type="AudioStream" uid="uid://bxtsvbj8cfh6f" path="res://assets/sounds/infantry.wav" id="18_1s85e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hfdm2"]
@@ -58,32 +54,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_8or24")
+"texture": ExtResource("11_paxkr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_kv3i3")
+"texture": ExtResource("12_6vbko")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_58dmk")
+"texture": ExtResource("13_xfcq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_nxo5s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_lhpb3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_8aqr3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_r0vnx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_hrplu")
+"texture": ExtResource("14_vws2c")
 }],
 "loop": true,
 "name": &"move",
-"speed": 9.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2gdoh"]
@@ -96,11 +80,11 @@ objective_damage = 10
 speed = 200
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.195313, 0.195313)
 sprite_frames = SubResource("SpriteFrames_hfdm2")
-animation = &"die"
+animation = &"move"
 autoplay = "move"
-frame = 6
-frame_progress = 1.0
+frame_progress = 0.416459
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_2gdoh")

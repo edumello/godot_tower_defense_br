@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1obyxslb7tkd"]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_44qe2"]
+[ext_resource type="Texture2D" uid="uid://mbqkp2pjxtfj" path="res://assets/ui/heads_up/headsup_panel.png" id="1_y4283"]
+[ext_resource type="Texture2D" uid="uid://c8owwi2eo4er8" path="res://assets/ui/heads_up/tower_icon.png" id="2_7vap4"]
+[ext_resource type="Texture2D" uid="uid://c3j7m3qn0qjjx" path="res://assets/ui/heads_up/lifebar_window.png" id="3_e7tnk"]
+[ext_resource type="Texture2D" uid="uid://bxpl8mrgb4e8u" path="res://assets/ui/heads_up/lifebar.png" id="4_7b1w6"]
+[ext_resource type="Texture2D" uid="uid://c2ywcpr6ltrep" path="res://assets/ui/heads_up/coin_icon.png" id="5_aio81"]
+[ext_resource type="Texture2D" uid="uid://daw0le7bxjwa5" path="res://assets/ui/heads_up/currency_window.png" id="6_a2g3e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntgte"]
+texture = ExtResource("1_y4283")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rov5"]
+texture = ExtResource("6_a2g3e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ue603"]
+texture = ExtResource("6_a2g3e")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu4ar"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql556"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_44qe2")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 1577.0
+offset_top = 1.0
+offset_right = 1918.0
+offset_bottom = 149.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ntgte")
+
+[node name="Rows" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 40.0
+offset_right = 55.0
+offset_bottom = 80.0
+
+[node name="Health" type="HBoxContainer" parent="Control/Panel/Rows"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Control/Panel/Rows/Health"]
+layout_mode = 2
+texture = ExtResource("2_7vap4")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Control/Panel/Rows/Health"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("3_e7tnk")
+texture_progress = ExtResource("4_7b1w6")
+texture_progress_offset = Vector2(4, 4)
+
+[node name="Money" type="HBoxContainer" parent="Control/Panel/Rows"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Control/Panel/Rows/Money"]
+layout_mode = 2
+texture = ExtResource("5_aio81")
+
+[node name="MoneyLabel" type="Label" parent="Control/Panel/Rows/Money"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_5rov5")
+text = "10000"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WaveLabel" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 155.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_ue603")
+text = "Wave: 01
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextWave" type="Panel" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 788.0
+offset_top = 10.0
+offset_right = 1132.0
+offset_bottom = 74.0
+
+[node name="Rows" type="HBoxContainer" parent="Control/NextWave"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Control/NextWave/Rows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hu4ar")
+text = "Next wave in:"
+horizontal_alignment = 1
+
+[node name="Countdown" type="Label" parent="Control/NextWave/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ql556")
+text = "5"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="Control/NextWave"]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="Control/NextWave/Timer" to="." method="_on_timer_timeout"]
