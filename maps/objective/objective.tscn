@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dkh0hhtdhempd"]
+[gd_scene load_steps=46 format=3 uid="uid://dkh0hhtdhempd"]
 
 [ext_resource type="Script" path="res://maps/objective/objective.gd" id="1_8aef7"]
 [ext_resource type="Texture2D" uid="uid://cdbvi5372mif0" path="res://assets/objective/objective_die_00.png" id="1_8h0ee"]
@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cr3fjnudgggtd" path="res://assets/objective/objective_die_38.png" id="39_w5txq"]
 [ext_resource type="Texture2D" uid="uid://d4lpupxyoi81r" path="res://assets/objective/objective_die_39.png" id="40_bmysq"]
 [ext_resource type="Texture2D" uid="uid://boe1i0v5hodul" path="res://assets/objective/objective_idle_00.png" id="41_3bibk"]
+[ext_resource type="PackedScene" uid="uid://53utnjmvn1nv" path="res://entities/explosion_vfx/explosion.tscn" id="43_36y2x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wigoq"]
 animations = [{
@@ -197,4 +198,7 @@ frame_progress = 1.0
 position = Vector2(0.25, -0.75)
 shape = SubResource("RectangleShape2D_o11gv")
 
+[node name="Explosion" parent="." instance=ExtResource("43_36y2x")]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

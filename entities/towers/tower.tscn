@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://byp88f246vd2e"]
+[gd_scene load_steps=9 format=3 uid="uid://byp88f246vd2e"]
 
 [ext_resource type="Script" path="res://entities/towers/tower.gd" id="1_pqjhv"]
 [ext_resource type="Texture2D" uid="uid://dfekbdfiamvpk" path="res://assets/towers/gatling/tier1/base_idle_00.png" id="1_sdco7"]
 [ext_resource type="PackedScene" uid="uid://b2yo7rmvf4ir8" path="res://entities/shooter.tscn" id="2_oxqam"]
 [ext_resource type="PackedScene" uid="uid://c7emb8w7nldom" path="res://entities/projectiles/projectile.tscn" id="3_2w0g8"]
 [ext_resource type="AudioStream" uid="uid://cr634uwxgmrlp" path="res://assets/sounds/gatling.wav" id="3_m6svd"]
+[ext_resource type="PackedScene" uid="uid://53utnjmvn1nv" path="res://entities/explosion_vfx/explosion.tscn" id="6_qcnh8"]
+[ext_resource type="PackedScene" uid="uid://vf8h1daq07qx" path="res://ui/entity_hud.tscn" id="6_vlc0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2flu"]
 size = Vector2(114, 110)
@@ -12,6 +14,7 @@ size = Vector2(114, 110)
 [node name="Tower" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 33
+input_pickable = true
 script = ExtResource("1_pqjhv")
 
 [node name="Foundation" type="Sprite2D" parent="."]
@@ -32,6 +35,21 @@ position = Vector2(68, 0)
 [node name="ShootSound" parent="Shooter" index="2"]
 stream = ExtResource("3_m6svd")
 
+[node name="Explosion" parent="." instance=ExtResource("6_qcnh8")]
+
+[node name="UI" type="Node2D" parent="."]
+z_index = 50
+
+[node name="EntityHUD" parent="UI" instance=ExtResource("6_vlc0j")]
+offset_left = -55.0
+offset_top = -105.0
+offset_right = -15.0
+offset_bottom = -65.0
+scale = Vector2(1.14713, 1.02272)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="has_shot" from="Shooter" to="." method="_on_shooter_has_shot"]
 [connection signal="animation_finished" from="Shooter/Gun" to="." method="_on_gun_animation_finished"]
 
 [editable path="Shooter"]

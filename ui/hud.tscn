@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1obyxslb7tkd"]
+[gd_scene load_steps=15 format=3 uid="uid://c1obyxslb7tkd"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_44qe2"]
 [ext_resource type="Texture2D" uid="uid://mbqkp2pjxtfj" path="res://assets/ui/heads_up/headsup_panel.png" id="1_y4283"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bxpl8mrgb4e8u" path="res://assets/ui/heads_up/lifebar.png" id="4_7b1w6"]
 [ext_resource type="Texture2D" uid="uid://c2ywcpr6ltrep" path="res://assets/ui/heads_up/coin_icon.png" id="5_aio81"]
 [ext_resource type="Texture2D" uid="uid://daw0le7bxjwa5" path="res://assets/ui/heads_up/currency_window.png" id="6_a2g3e"]
+[ext_resource type="PackedScene" uid="uid://hsc2jnynioof" path="res://ui/pause.tscn" id="8_fljc5"]
+[ext_resource type="PackedScene" uid="uid://on0t7jue0ag0" path="res://ui/game_over.tscn" id="9_ijvta"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntgte"]
 texture = ExtResource("1_y4283")
@@ -23,6 +25,7 @@ modulate_color = Color(1, 1, 1, 0.627451)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql556"]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_44qe2")
 
 [node name="Control" type="Control" parent="."]
@@ -136,5 +139,34 @@ horizontal_alignment = 1
 [node name="Timer" type="Timer" parent="Control/NextWave"]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Menus" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" parent="Menus" instance=ExtResource("8_fljc5")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1000.0
+offset_bottom = 499.999
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GameOver" parent="Menus" instance=ExtResource("9_ijvta")]
+visible = false
+layout_mode = 1
+offset_left = 436.0
+offset_top = 278.0
+offset_right = 1436.0
+offset_bottom = 777.999
 
 [connection signal="timeout" from="Control/NextWave/Timer" to="." method="_on_timer_timeout"]

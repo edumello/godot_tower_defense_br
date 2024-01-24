@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dlc74qklkorib"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dlc74qklkorib"]
 
 [ext_resource type="Texture2D" uid="uid://cpmxu0mjcw8lx" path="res://assets/ui/turret_menu/button_normal.png" id="1_7rwsb"]
 [ext_resource type="Texture2D" uid="uid://c7j3rtew0vge1" path="res://assets/ui/turret_menu/button_pressed.png" id="2_y2ecq"]
@@ -44,6 +44,12 @@ content_margin_right = 40.0
 content_margin_bottom = 40.0
 texture = ExtResource("4_vfyva")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oj3c"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsmjk"]
+bg_color = Color(1, 1, 1, 1)
+
 [resource]
 default_font = ExtResource("5_h12g6")
 Button/styles/focus = SubResource("StyleBoxEmpty_4bduj")
@@ -52,3 +58,5 @@ Button/styles/normal = SubResource("StyleBoxTexture_jpdyo")
 Button/styles/pressed = SubResource("StyleBoxTexture_6ob8s")
 Label/styles/normal = SubResource("StyleBoxTexture_g816g")
 Panel/styles/panel = SubResource("StyleBoxTexture_rt837")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_6oj3c")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_jsmjk")

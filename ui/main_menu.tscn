@@ -1,0 +1,227 @@
+[gd_scene load_steps=6 format=3 uid="uid://q3wgya0he6tu"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_gbki7"]
+[ext_resource type="Texture2D" uid="uid://dtjwpd4spnru3" path="res://assets/ui/menu/cover_notitles_cropped.jpg" id="1_h68lr"]
+[ext_resource type="Texture2D" uid="uid://1udmidjeh6j4" path="res://assets/ui/menu/title.png" id="2_kqf1q"]
+[ext_resource type="Texture2D" uid="uid://dmonks5yeqqe1" path="res://assets/ui/menu/mouse_diagram.png" id="3_emnph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_26m76"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gbki7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_h68lr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -630.0
+offset_top = -400.0
+offset_right = 630.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Title" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+texture = ExtResource("2_kqf1q")
+stretch_mode = 5
+
+[node name="Start" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "START
+"
+
+[node name="HowToPlay" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "HOW TO PLAY"
+
+[node name="Quit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "QUIT"
+
+[node name="HowToPlay" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -500.0
+offset_right = 300.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HowToPlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="HowToPlay/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Objective" type="VBoxContainer" parent="HowToPlay/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HowToPlay/VBoxContainer/Objective"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Objective
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Description" type="Label" parent="HowToPlay/VBoxContainer/Objective"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Defend the outpost from the enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Controls" type="VBoxContainer" parent="HowToPlay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="HowToPlay/VBoxContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Controls
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Instructions" type="HBoxContainer" parent="HowToPlay/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="MouseImage" type="TextureRect" parent="HowToPlay/VBoxContainer/Controls/Instructions"]
+layout_mode = 2
+texture = ExtResource("3_emnph")
+
+[node name="Labels" type="Control" parent="HowToPlay/VBoxContainer/Controls/Instructions"]
+layout_mode = 2
+
+[node name="Select" type="Label" parent="HowToPlay/VBoxContainer/Controls/Instructions/Labels"]
+layout_mode = 2
+offset_left = -162.0
+offset_top = 47.0
+offset_right = 220.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Select
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MoveCamera" type="Label" parent="HowToPlay/VBoxContainer/Controls/Instructions/Labels"]
+layout_mode = 2
+offset_left = -46.0
+offset_top = 86.0
+offset_right = 336.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Move Camera (Click and drag)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Zoom" type="Label" parent="HowToPlay/VBoxContainer/Controls/Instructions/Labels"]
+layout_mode = 2
+offset_left = -124.0
+offset_top = 131.0
+offset_right = 258.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Zoom (Scroll)"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Esc" type="Label" parent="HowToPlay/VBoxContainer/Controls/Instructions/Labels"]
+layout_mode = 2
+offset_left = -126.0
+offset_top = 175.0
+offset_right = 256.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_26m76")
+text = "Esc to Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Back" type="Button" parent="HowToPlay/VBoxContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back
+"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HowToPlay/VBoxContainer/Controls/Back" to="." method="_on_back_pressed"]
