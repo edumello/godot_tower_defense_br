@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://bedcxuv34eu26"]
+
+[ext_resource type="Script" path="res://ui/tower_popup.gd" id="1_kyghu"]
+[ext_resource type="Texture2D" uid="uid://dogavirijyiav" path="res://assets/ui/turret_menu/turret_gatling_icon.png" id="1_yatyd"]
+[ext_resource type="Texture2D" uid="uid://d0cm7ixe1bi3h" path="res://assets/ui/turret_menu/red_circle_cross.png" id="2_5ixq8"]
+[ext_resource type="Texture2D" uid="uid://86dw6ulc8w0x" path="res://assets/ui/turret_menu/turret_single_icon.png" id="3_8bki0"]
+[ext_resource type="Texture2D" uid="uid://bhp8eg15nmem3" path="res://assets/ui/turret_menu/turret_missile_icon.png" id="4_m4nxn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_numc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vheh5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olmli"]
+
+[node name="TowerPopup" type="CanvasLayer"]
+script = ExtResource("1_kyghu")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Background"]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 309.0
+offset_right = 1252.0
+offset_bottom = 679.0
+
+[node name="Towers" type="HBoxContainer" parent="Background/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 84.0
+offset_right = 85.0
+offset_bottom = 124.0
+theme_override_constants/separation = 10
+
+[node name="Gatling" type="VBoxContainer" parent="Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Background/Panel/Towers/Gatling"]
+layout_mode = 2
+icon = ExtResource("1_yatyd")
+
+[node name="Label" type="Label" parent="Background/Panel/Towers/Gatling"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "200
+"
+horizontal_alignment = 1
+
+[node name="Cannon" type="VBoxContainer" parent="Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Background/Panel/Towers/Cannon"]
+layout_mode = 2
+icon = ExtResource("3_8bki0")
+
+[node name="Label" type="Label" parent="Background/Panel/Towers/Cannon"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "400
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="VBoxContainer" parent="Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Background/Panel/Towers/Missile"]
+layout_mode = 2
+icon = ExtResource("4_m4nxn")
+
+[node name="Label" type="Label" parent="Background/Panel/Towers/Missile"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "600
+"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Background/Panel"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = -15.0
+offset_right = 653.0
+offset_bottom = 66.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_numc5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vheh5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_olmli")
+icon = ExtResource("2_5ixq8")
+icon_alignment = 1
+
+[connection signal="pressed" from="Background/Panel/Towers/Gatling/Button" to="." method="_on_button_pressed" binds= ["gatling"]]
+[connection signal="pressed" from="Background/Panel/Towers/Cannon/Button" to="." method="_on_button_pressed" binds= ["cannon"]]
+[connection signal="pressed" from="Background/Panel/Towers/Missile/Button" to="." method="_on_button_pressed" binds= ["missile"]]
+[connection signal="pressed" from="Background/Panel/Close" to="." method="_on_close_pressed"]

@@ -34,3 +34,7 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	next_wave_panel.hide()
+
+
+func _on_money_changed(money: int) -> void:
+	money_label.text = str(money)

@@ -3,13 +3,15 @@ extends Node2D
 
 signal countdown_started(seconds: float)
 signal wave_started(current_wave: int)
+signal enemy_spawned(enemy: Enemy)
 
 @export_range(0.5, 5.0, 0.5) var spawn_rate : float = 2.0
 @export var wave_count := 3
 @export var enemies_per_wave_count := 10
 @export var spawn_probabilities := {
-	"infantry":  80,
-	"tank": 20
+	"infantry":  85,
+	"tank": 15,
+	"helicopter" : 5
 }
 
 var spawn_locations := []
@@ -17,7 +19,8 @@ var current_wave := 0
 var current_enemy_count := 0
 var enemy_scenes := {
 	"infantry": preload("res://entities/enemies/infantry/infantry_t1.tscn"),
-	"tank": preload("res://entities/enemies/tanks/tank.tscn")
+	"tank": preload("res://entities/enemies/tanks/tank.tscn"),
+	"helicopter": preload("res://entities/enemies/helicopters/helicopter.tscn")
 }
 
 @onready var wave_timer : Timer = $WaveTimer as Timer
@@ -47,6 +50,7 @@ func _spawn_new_enemy(enemy_name: String) -> void:
 	var spawner_marker = spawn_locations.pick_random()
 	enemy.global_position = spawner_marker.global_position
 	current_enemy_count += 1
+	enemy_spawned.emit(enemy)
 	
 func _end_wave() -> void:
 	if current_wave < wave_count:

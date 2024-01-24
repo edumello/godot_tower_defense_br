@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cijcqdno5bqls"]
+
+[ext_resource type="Script" path="res://entities/towers/tower_slot.gd" id="1_0qko2"]
+[ext_resource type="Texture2D" uid="uid://nx2kx8n2dilw" path="res://assets/towers/cannon/tier1/base_idle_00.png" id="1_j2f1h"]
+[ext_resource type="PackedScene" uid="uid://bedcxuv34eu26" path="res://ui/tower_popup.tscn" id="2_2lwga"]
+[ext_resource type="Texture2D" uid="uid://8gro1sdqcdpa" path="res://assets/ui/turret buttons/repair.png" id="4_cwdf6"]
+[ext_resource type="Texture2D" uid="uid://b8woljfdx23v2" path="res://assets/ui/turret buttons/replace.png" id="5_o8wa3"]
+[ext_resource type="Texture2D" uid="uid://c42fe3avyew0r" path="res://assets/ui/turret buttons/remove.png" id="6_ijv0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kxyc"]
+size = Vector2(118, 110)
+
+[node name="TowerSlot" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_0qko2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j2f1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0kxyc")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="TowerPopup" parent="UI" instance=ExtResource("2_2lwga")]
+visible = false
+
+[node name="TowerActions" type="VBoxContainer" parent="UI"]
+visible = false
+offset_left = 75.0
+offset_top = -57.0
+offset_right = 244.0
+offset_bottom = 440.0
+
+[node name="Repair" type="Button" parent="UI/TowerActions"]
+layout_mode = 2
+icon = ExtResource("4_cwdf6")
+
+[node name="Exchange" type="Button" parent="UI/TowerActions"]
+layout_mode = 2
+icon = ExtResource("5_o8wa3")
+
+[node name="Sell" type="Button" parent="UI/TowerActions"]
+layout_mode = 2
+icon = ExtResource("6_ijv0i")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="tower_requested" from="UI/TowerPopup" to="." method="_on_tower_popup_tower_requested"]
+[connection signal="pressed" from="UI/TowerActions/Repair" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="UI/TowerActions/Exchange" to="." method="_on_exchange_pressed"]
+[connection signal="pressed" from="UI/TowerActions/Sell" to="." method="_on_sell_pressed"]

@@ -9,12 +9,14 @@ extends Area2D
 var speed: int
 var damage: int
 var velocity: Vector2
+var target: Node2D #only for missile
 
-func start(_position: Vector2, _rotation: float, _speed: int, _damage: int) -> void:
+func start(_position: Vector2, _rotation: float, _speed: int, _damage: int, _target: Node2D) -> void:
 	global_position = _position
 	rotation = _rotation
 	speed = _speed
 	damage = _damage
+	target = _target
 	velocity = Vector2.RIGHT.rotated(_rotation) * speed
 
 func _physics_process(delta: float) -> void:

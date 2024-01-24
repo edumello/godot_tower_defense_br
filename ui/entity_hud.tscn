@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://vf8h1daq07qx"]
+
+[node name="EntityHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ReloadBar" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2

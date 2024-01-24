@@ -2,10 +2,13 @@ class_name Enemy
 
 extends CharacterBody2D
 
+signal enemy_died(enemy: Enemy)
+
 @export var speed: int = 150
 @export var rot_speed := 10.0
 @export var health := 100:
 	set = set_health
+@export var kill_reward := 100
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -50,6 +53,7 @@ func die() -> void:
 	animated_sprite_2d.play("die")
 	default_sound.stop()
 	nav_agent.set_velocity(Vector2.ZERO)
+	enemy_died.emit(self)
 	
 	
 func play_animation(anim_name: String) -> void:

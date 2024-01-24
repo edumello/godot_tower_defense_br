@@ -15,6 +15,10 @@ run/main_scene="res://maps/map.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://autoloads/global.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -46,9 +50,13 @@ pan={
 [layer_names]
 
 2d_physics/layer_1="infantry"
+2d_navigation/layer_1="ground"
 2d_physics/layer_2="tower"
+2d_navigation/layer_2="air"
 2d_physics/layer_3="projectile"
 2d_physics/layer_4="tower_slot"
 2d_physics/layer_5="objective"
 2d_physics/layer_6="tank"
 2d_physics/layer_7="helicopter"
+avoidance/layer_1="ground"
+avoidance/layer_2="air"

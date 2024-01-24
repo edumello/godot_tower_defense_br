@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkh0hhtdhempd" path="res://maps/objective/objective.tscn" id="3_tj0ji"]
 [ext_resource type="PackedScene" uid="uid://qsqld1xtmttp" path="res://maps/camera/camera2D.tscn" id="4_83ee1"]
 [ext_resource type="PackedScene" uid="uid://d88njoad6kww" path="res://maps/spawner/spawner.tscn" id="5_fkdgc"]
-[ext_resource type="PackedScene" uid="uid://bcn2h6l0nc5ym" path="res://entities/towers/gatling_tower.tscn" id="7_prbmg"]
-[ext_resource type="PackedScene" uid="uid://cpmdurj1hgain" path="res://entities/towers/cannon_tower.tscn" id="8_xml0t"]
+[ext_resource type="PackedScene" uid="uid://cijcqdno5bqls" path="res://entities/towers/tower_slot.tscn" id="6_aiqrk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fmq7g"]
 vertices = PackedVector2Array(32, 64, -64, 64, -64, -64, 36, 39, 64, -64, 64, 32)
@@ -253,6 +252,12 @@ terrain_set_0/terrain_0/color = Color(0.588235, 0.176471, 0.588235, 1)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_wcnuc")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mvhob"]
+vertices = PackedVector2Array(3805, 167, 4094, 799, 4050, 2890, -1, 2934, 1, 153)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3812, 158, 4105, 798, 4060, 2900, -12, 2945, -8, 143)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Map" type="Node2D"]
 script = ExtResource("1_odf5o")
 
@@ -283,25 +288,49 @@ position = Vector2(1824, 2651)
 [node name="SpawnLocation3" parent="Spawner/SpawnContainer" index="2"]
 position = Vector2(-25, 2213)
 
-[node name="GatlingTower" parent="." instance=ExtResource("7_prbmg")]
-position = Vector2(585, 376)
+[node name="TowerSlot" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(2189, 2054)
 
-[node name="GatlingTower3" parent="." instance=ExtResource("7_prbmg")]
-position = Vector2(1030, 1541)
+[node name="TowerSlot2" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(255, 1542)
 
-[node name="GatlingTower4" parent="." instance=ExtResource("7_prbmg")]
-position = Vector2(2184, 2079)
+[node name="TowerSlot3" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(503, 1149)
 
-[node name="GatlingTower5" parent="." instance=ExtResource("7_prbmg")]
-position = Vector2(2998, 1857)
+[node name="TowerSlot4" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(2195, 2563)
 
-[node name="CannonTower" parent="." instance=ExtResource("8_xml0t")]
-position = Vector2(1579, 2022)
+[node name="TowerSlot5" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(1581, 2031)
 
-[node name="CannonTower2" parent="." instance=ExtResource("8_xml0t")]
-position = Vector2(3535, 1598)
+[node name="TowerSlot6" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(1573, 2532)
 
-[node name="CannonTower3" parent="." instance=ExtResource("8_xml0t")]
-position = Vector2(526, 1134)
+[node name="TowerSlot7" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(263, 764)
+
+[node name="TowerSlot8" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(181, 376)
+
+[node name="TowerSlot9" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(1601, 524)
+
+[node name="TowerSlot10" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(2186, 524)
+
+[node name="TowerSlot11" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(2845, 2042)
+
+[node name="TowerSlot12" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(3558, 1598)
+
+[node name="TowerSlot13" parent="." instance=ExtResource("6_aiqrk")]
+position = Vector2(2967, 1335)
+
+[node name="AircraftNavRegion" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(9, -126)
+navigation_polygon = SubResource("NavigationPolygon_mvhob")
+navigation_layers = 2
 
 [editable path="Spawner"]

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://byp88f246vd2e" path="res://entities/towers/tower.tscn" id="1_doxoe"]
 
 [node name="GatlingTower" instance=ExtResource("1_doxoe")]
+tower_type = "gatling"
 
 [node name="Marker2D" type="Marker2D" parent="Shooter/Gun" index="1"]
 position = Vector2(63, 18)
