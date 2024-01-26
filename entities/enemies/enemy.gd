@@ -26,7 +26,7 @@ func _ready() -> void:
 	nav_agent.max_speed = speed
 	entity_hud.health_bar.max_value = health
 	entity_hud.health_bar.value = health
-	
+
 	var shooter := get_shooter()
 	if shooter:
 		shooter.has_shot.connect(self._on_shooter_has_shot)
@@ -42,8 +42,10 @@ func _move(delta: float) -> void:
 	else:
 		nav_agent.set_velocity(new_velocity)
 	
-	animated_sprite_2d.global_rotation = _calculate_rot(animated_sprite_2d.global_rotation, velocity.angle(), rot_speed, delta )
-	collision_shape_2d.global_rotation = _calculate_rot(collision_shape_2d.global_rotation, velocity.angle(), rot_speed, delta )
+	
+	#animated_sprite_2d.flip_h()
+	#animated_sprite_2d.global_rotation = _calculate_rot(animated_sprite_2d.global_rotation, velocity.angle(), rot_speed, delta )
+	#collision_shape_2d.global_rotation = _calculate_rot(collision_shape_2d.global_rotation, velocity.angle(), rot_speed, delta )
 	
 
 

@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bedcxuv34eu26"]
+[gd_scene load_steps=10 format=3 uid="uid://bedcxuv34eu26"]
 
 [ext_resource type="Script" path="res://ui/tower_popup.gd" id="1_kyghu"]
-[ext_resource type="Texture2D" uid="uid://dogavirijyiav" path="res://assets/ui/turret_menu/turret_gatling_icon.png" id="1_yatyd"]
 [ext_resource type="Texture2D" uid="uid://d0cm7ixe1bi3h" path="res://assets/ui/turret_menu/red_circle_cross.png" id="2_5ixq8"]
-[ext_resource type="Texture2D" uid="uid://86dw6ulc8w0x" path="res://assets/ui/turret_menu/turret_single_icon.png" id="3_8bki0"]
-[ext_resource type="Texture2D" uid="uid://bhp8eg15nmem3" path="res://assets/ui/turret_menu/turret_missile_icon.png" id="4_m4nxn"]
+[ext_resource type="Texture2D" uid="uid://b2an7vc8kfodp" path="res://assets/ui/turret_menu/Indio_Top0000 (Custom).png" id="2_p7ahu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mii8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2n5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mkh0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_numc5"]
 
@@ -45,11 +49,12 @@ theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="Background/Panel/Towers/Gatling"]
 layout_mode = 2
-icon = ExtResource("1_yatyd")
+icon = ExtResource("2_p7ahu")
 
 [node name="Label" type="Label" parent="Background/Panel/Towers/Gatling"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mii8v")
 text = "200
 "
 horizontal_alignment = 1
@@ -61,12 +66,14 @@ theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="Background/Panel/Towers/Cannon"]
 layout_mode = 2
-icon = ExtResource("3_8bki0")
+disabled = true
+icon = ExtResource("2_p7ahu")
 
 [node name="Label" type="Label" parent="Background/Panel/Towers/Cannon"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "400
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e2n5a")
+text = "LOCKED
 "
 horizontal_alignment = 1
 
@@ -77,16 +84,19 @@ theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="Background/Panel/Towers/Missile"]
 layout_mode = 2
-icon = ExtResource("4_m4nxn")
+disabled = true
+icon = ExtResource("2_p7ahu")
 
 [node name="Label" type="Label" parent="Background/Panel/Towers/Missile"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "600
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7mkh0")
+text = "LOCKED
 "
 horizontal_alignment = 1
 
 [node name="Close" type="Button" parent="Background/Panel"]
+visible = false
 layout_mode = 0
 offset_left = 572.0
 offset_top = -15.0

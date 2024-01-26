@@ -60,3 +60,9 @@ pan={
 2d_physics/layer_7="helicopter"
 avoidance/layer_1="ground"
 avoidance/layer_2="air"
+2d_physics/main_scene="res://maps/map.tscn"
+
+[navigation]
+
+2d/default_edge_connection_margin=20.0
+2d/default_link_connection_radius=20.0

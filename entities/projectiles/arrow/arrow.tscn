@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://52vs1uanf3q6"]
+
+[ext_resource type="PackedScene" uid="uid://qqvmgvtuqqx0" path="res://entities/projectiles/shell/shell.tscn" id="1_0qyq7"]
+[ext_resource type="Texture2D" uid="uid://dhejfnuw1ue2b" path="res://assets/projectiles/arrow/arrow.png" id="2_yuadb"]
+[ext_resource type="AudioStream" uid="uid://drftfdbw2gw0w" path="res://assets/sounds/new_sounds/Medieval Weapons Sound Effects - Whack02.mp3" id="3_exmsa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0q42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yuadb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jmfo2"]
+radius = 3.0
+height = 224.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5di7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}]
+
+[node name="Arrow" instance=ExtResource("1_0qyq7")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_w0q42")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0)
+shape = SubResource("CapsuleShape2D_jmfo2")
+
+[node name="HitVfx" parent="." index="2"]
+visible = true
+sprite_frames = SubResource("SpriteFrames_l5di7")
+frame = 0
+frame_progress = 0.0
+
+[node name="HitSound" parent="." index="3"]
+stream = ExtResource("3_exmsa")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drftfdbw2gw0w"
+path="res://.godot/imported/Medieval Weapons Sound Effects - Whack02.mp3-88bc380f9bb9a44936b52c111473acaf.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/new_sounds/Medieval Weapons Sound Effects - Whack02.mp3"
+dest_files=["res://.godot/imported/Medieval Weapons Sound Effects - Whack02.mp3-88bc380f9bb9a44936b52c111473acaf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

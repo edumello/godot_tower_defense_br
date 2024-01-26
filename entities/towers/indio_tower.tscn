@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo57bywssf1yo"]
+
+[ext_resource type="PackedScene" uid="uid://byp88f246vd2e" path="res://entities/towers/tower.tscn" id="1_6e8gg"]
+[ext_resource type="Texture2D" uid="uid://c1jydx15ss2c8" path="res://assets/towers/indio/Indio_Body.png" id="2_nsawc"]
+[ext_resource type="PackedScene" uid="uid://52vs1uanf3q6" path="res://entities/projectiles/arrow/arrow.tscn" id="3_xbud1"]
+[ext_resource type="AudioStream" uid="uid://dbx5oix4babbu" path="res://assets/sounds/new_sounds/Medieval Weapons Sound Effects - Throwing-whip-effect.mp3" id="9_mvr7w"]
+[ext_resource type="Texture2D" uid="uid://lba4mgicm1mi" path="res://assets/towers/indio/Indio_Top0000.png" id="26_devrv"]
+[ext_resource type="Texture2D" uid="uid://krlrgwv2les8" path="res://assets/towers/indio/Indio_Top0001.png" id="27_5skx8"]
+[ext_resource type="Texture2D" uid="uid://gvdo82b05vbi" path="res://assets/towers/indio/Indio_Top0002.png" id="28_20c8p"]
+[ext_resource type="Texture2D" uid="uid://dl1at6rpa7g84" path="res://assets/towers/indio/Indio_Top0003.png" id="29_o343l"]
+[ext_resource type="Texture2D" uid="uid://cdhcb6bcy7ms5" path="res://assets/towers/indio/Indio_Top0004.png" id="30_hy4wc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2p5b8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_devrv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_devrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5skx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_20c8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_o343l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_hy4wc")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh565"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61t61"]
+radius = 1000.0
+
+[node name="IndioTower" instance=ExtResource("1_6e8gg")]
+health = 4
+
+[node name="Foundation" parent="." index="0"]
+position = Vector2(-4, -273)
+texture = ExtResource("2_nsawc")
+offset = Vector2(-36, 64)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, -26)
+scale = Vector2(0.0800002, 0.0800002)
+disabled = true
+
+[node name="Shooter" parent="." index="2"]
+position = Vector2(67, -222)
+fire_rate = 1.0
+projectile_type = ExtResource("3_xbud1")
+projectile_speed = 1500
+projectile_damage = 1
+
+[node name="Gun" parent="Shooter" index="0"]
+position = Vector2(-67, -33)
+sprite_frames = SubResource("SpriteFrames_2p5b8")
+animation = &"die"
+offset = Vector2(-36.0074, 41.1534)
+
+[node name="Muzzle" parent="Shooter/Gun" index="0"]
+position = Vector2(-197, 12)
+
+[node name="MuzzleFlash" parent="Shooter" index="1"]
+position = Vector2(-135, -2)
+sprite_frames = SubResource("SpriteFrames_gh565")
+animation = &"shoot"
+
+[node name="ShootSound" parent="Shooter" index="2"]
+stream = ExtResource("9_mvr7w")
+
+[node name="CollisionShape2D" parent="Shooter/Detector" index="0"]
+shape = SubResource("CircleShape2D_61t61")
+
+[node name="LookAhead" parent="Shooter" index="4"]
+top_level = true
+z_index = 100
+target_position = Vector2(-1050, 0)
+
+[node name="Explosion" parent="." index="3"]
+position = Vector2(-1, -244)
+
+[node name="UI" parent="." index="4"]
+visible = false
+
+[editable path="Shooter"]

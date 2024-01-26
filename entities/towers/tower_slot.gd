@@ -17,7 +17,7 @@ const PRICE_LABEL_PATH := "UI/TowerPopup/Background/Panel/Towers/%s/Label"
 func _ready() -> void:
 	for tower_name in Global.tower_costs.keys():
 		var price_label := get_node(PRICE_LABEL_PATH % [tower_name.capitalize()]) as Label
-		price_label.text = str(Global.tower_costs[tower_name])
+		price_label.text = str(Global.tower_costs[price_label])
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton \

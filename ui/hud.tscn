@@ -1,28 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1obyxslb7tkd"]
+[gd_scene load_steps=18 format=3 uid="uid://c1obyxslb7tkd"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_44qe2"]
-[ext_resource type="Texture2D" uid="uid://mbqkp2pjxtfj" path="res://assets/ui/heads_up/headsup_panel.png" id="1_y4283"]
-[ext_resource type="Texture2D" uid="uid://c8owwi2eo4er8" path="res://assets/ui/heads_up/tower_icon.png" id="2_7vap4"]
+[ext_resource type="Texture2D" uid="uid://stbs15us86tm" path="res://assets/ui/heads_up/Tree_icon2.png" id="2_beg8x"]
 [ext_resource type="Texture2D" uid="uid://c3j7m3qn0qjjx" path="res://assets/ui/heads_up/lifebar_window.png" id="3_e7tnk"]
 [ext_resource type="Texture2D" uid="uid://bxpl8mrgb4e8u" path="res://assets/ui/heads_up/lifebar.png" id="4_7b1w6"]
 [ext_resource type="Texture2D" uid="uid://c2ywcpr6ltrep" path="res://assets/ui/heads_up/coin_icon.png" id="5_aio81"]
-[ext_resource type="Texture2D" uid="uid://daw0le7bxjwa5" path="res://assets/ui/heads_up/currency_window.png" id="6_a2g3e"]
 [ext_resource type="PackedScene" uid="uid://hsc2jnynioof" path="res://ui/pause.tscn" id="8_fljc5"]
+[ext_resource type="Texture2D" uid="uid://b2an7vc8kfodp" path="res://assets/ui/turret_menu/Indio_Top0000 (Custom).png" id="9_6vkmk"]
 [ext_resource type="PackedScene" uid="uid://on0t7jue0ag0" path="res://ui/game_over.tscn" id="9_ijvta"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntgte"]
-texture = ExtResource("1_y4283")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rov5"]
-texture = ExtResource("6_a2g3e")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ue603"]
-texture = ExtResource("6_a2g3e")
-modulate_color = Color(1, 1, 1, 0.627451)
+[ext_resource type="Texture2D" uid="uid://d0cm7ixe1bi3h" path="res://assets/ui/turret_menu/red_circle_cross.png" id="10_0yidp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu4ar"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql556"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mii8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2n5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mkh0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_numc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vheh5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olmli"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 5
@@ -43,7 +45,6 @@ offset_left = 1577.0
 offset_top = 1.0
 offset_right = 1918.0
 offset_bottom = 149.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ntgte")
 
 [node name="Rows" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 0
@@ -57,7 +58,7 @@ layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="Control/Panel/Rows/Health"]
 layout_mode = 2
-texture = ExtResource("2_7vap4")
+texture = ExtResource("2_beg8x")
 
 [node name="HealthBar" type="TextureProgressBar" parent="Control/Panel/Rows/Health"]
 unique_name_in_owner = true
@@ -79,7 +80,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_5rov5")
 text = "10000"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -92,7 +92,6 @@ offset_top = 8.0
 offset_right = 155.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_ue603")
 text = "Wave: 01
 "
 horizontal_alignment = 1
@@ -140,6 +139,100 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 one_shot = true
 
+[node name="TowerPopup" type="CanvasLayer" parent="Control"]
+
+[node name="Background" type="Control" parent="Control/TowerPopup"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -624.0
+offset_top = -597.0
+offset_right = -624.0
+offset_bottom = -597.0
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Control/TowerPopup/Background"]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 309.0
+offset_right = 1252.0
+offset_bottom = 679.0
+
+[node name="Towers" type="HBoxContainer" parent="Control/TowerPopup/Background/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 84.0
+offset_right = 85.0
+offset_bottom = 124.0
+theme_override_constants/separation = 10
+
+[node name="Gatling" type="VBoxContainer" parent="Control/TowerPopup/Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Control/TowerPopup/Background/Panel/Towers/Gatling"]
+layout_mode = 2
+icon = ExtResource("9_6vkmk")
+
+[node name="Label" type="Label" parent="Control/TowerPopup/Background/Panel/Towers/Gatling"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mii8v")
+text = "200
+"
+horizontal_alignment = 1
+
+[node name="Cannon" type="VBoxContainer" parent="Control/TowerPopup/Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Control/TowerPopup/Background/Panel/Towers/Cannon"]
+layout_mode = 2
+disabled = true
+icon = ExtResource("9_6vkmk")
+
+[node name="Label" type="Label" parent="Control/TowerPopup/Background/Panel/Towers/Cannon"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e2n5a")
+text = "LOCKED
+"
+horizontal_alignment = 1
+
+[node name="Missile" type="VBoxContainer" parent="Control/TowerPopup/Background/Panel/Towers"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="Control/TowerPopup/Background/Panel/Towers/Missile"]
+layout_mode = 2
+disabled = true
+icon = ExtResource("9_6vkmk")
+
+[node name="Label" type="Label" parent="Control/TowerPopup/Background/Panel/Towers/Missile"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7mkh0")
+text = "LOCKED
+"
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Control/TowerPopup/Background/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 572.0
+offset_top = -15.0
+offset_right = 653.0
+offset_bottom = 66.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_numc5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vheh5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_olmli")
+icon = ExtResource("10_0yidp")
+icon_alignment = 1
+
 [node name="Menus" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -170,3 +263,4 @@ offset_right = 1436.0
 offset_bottom = 777.999
 
 [connection signal="timeout" from="Control/NextWave/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Control/TowerPopup/Background/Panel/Close" to="Control/TowerPopup" method="_on_close_pressed"]

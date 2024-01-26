@@ -8,6 +8,7 @@ extends Control
 func _on_start_pressed() -> void:
 	var e = get_tree().change_scene_to_file("res://maps/map.tscn")
 	if e != OK:
+		print("Error while changing scene: %s" % str(e))
 		push_error("Error while changing scene: %s" % str(e))
 
 

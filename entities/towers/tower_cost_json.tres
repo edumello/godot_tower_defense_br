@@ -2,7 +2,5 @@
 
 [resource]
 data = {
-"cannon": 400.0,
-"gatling": 250.0,
-"missile": 800.0
+"indio": 100.0
 }

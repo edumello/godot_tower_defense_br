@@ -17,7 +17,6 @@ func set_health(value: int) -> void:
 	if health == 0:
 		collision_shape.set_deferred("disabled", true)
 		anim_sprite.play("die")
-		$Explosion/AnimationPlayer.play("big_explosion")
 
 
 func _on_body_entered(body: Node2D) -> void:

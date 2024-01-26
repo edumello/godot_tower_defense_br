@@ -46,7 +46,6 @@ layout_mode = 2
 icon = ExtResource("6_ijv0i")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="tower_requested" from="UI/TowerPopup" to="." method="_on_tower_popup_tower_requested"]
 [connection signal="pressed" from="UI/TowerActions/Repair" to="." method="_on_repair_pressed"]
 [connection signal="pressed" from="UI/TowerActions/Exchange" to="." method="_on_exchange_pressed"]
 [connection signal="pressed" from="UI/TowerActions/Sell" to="." method="_on_sell_pressed"]

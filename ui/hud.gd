@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var countdown_label := %Countdown as Label
 @onready var next_wave_timer := %Timer as Timer
 
+
 func initialize(max_helth: int) -> void:
 	health_bar.max_value = max_helth
 	health_bar.value = health_bar.max_value

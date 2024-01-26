@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://glb4o5cx4f6x"]
+
+[ext_resource type="PackedScene" uid="uid://dscayxgx6aulu" path="res://entities/enemies/enemy.tscn" id="1_bs3b3"]
+[ext_resource type="Script" path="res://entities/enemies/infantry/lumberjackman.gd" id="2_lg48m"]
+[ext_resource type="Texture2D" uid="uid://xhuuxiem3otk" path="res://assets/enemies/infantry/New folder/Andando0000.png" id="11_610b4"]
+[ext_resource type="Texture2D" uid="uid://chdxiun626bco" path="res://assets/enemies/infantry/New folder/Andando0004.png" id="12_4gdun"]
+[ext_resource type="Texture2D" uid="uid://iml4kdwatrct" path="res://assets/enemies/infantry/New folder/Andando0008.png" id="13_jnun5"]
+[ext_resource type="Texture2D" uid="uid://dn7oii3c6qltm" path="res://assets/enemies/infantry/New folder/Andando0012.png" id="14_jxgvp"]
+[ext_resource type="AudioStream" uid="uid://bxtsvbj8cfh6f" path="res://assets/sounds/infantry.wav" id="15_bjcck"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hfdm2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_610b4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_610b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4gdun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jnun5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jxgvp")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqlgj"]
+radius = 63.94
+height = 420.0
+
+[node name="InfantryT1" instance=ExtResource("1_bs3b3")]
+collision_mask = 4
+script = ExtResource("2_lg48m")
+objective_damage = 1
+speed = 200
+health = 3
+kill_reward = 30
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -256)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_hfdm2")
+animation = &"move"
+autoplay = "move"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3, -229)
+shape = SubResource("CapsuleShape2D_bqlgj")
+
+[node name="DefaultSound" parent="." index="2"]
+position = Vector2(0, -256)
+stream = ExtResource("15_bjcck")
+volume_db = -12.0
+
+[node name="NavigationAgent2D" parent="." index="3"]
+target_desired_distance = 50.0
+path_max_distance = 50.0
+avoidance_enabled = true
+radius = 25.0
+
+[node name="UI" parent="." index="5"]
+position = Vector2(0, -256)
+
+[node name="EntityHUD" parent="UI" index="0"]
+offset_left = -98.0
+offset_top = -277.0
+offset_right = -58.0
+offset_bottom = -237.0
+scale = Vector2(1.66937, 0.855703)
+metadata/_edit_use_anchors_ = true

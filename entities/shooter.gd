@@ -12,6 +12,8 @@ signal has_shot(reload_time: float)
 var targets : Array[Node2D]
 var can_shoot := true
 var map: Node
+var has_body := false
+var body 
 
 @onready var gun: AnimatedSprite2D = $Gun as AnimatedSprite2D
 @onready var muzzle_flash: AnimatedSprite2D = $MuzzleFlash as AnimatedSprite2D
@@ -21,17 +23,24 @@ var map: Node
 
 func _ready() -> void:
 	map = find_parent("Map")
-
+	#body = get_parent()
+	#if body is Enemy:
+		#has_body = true
+		#body = get_parent() as Enemy
 
 func _rotate_shooter(delta: float) -> void:
 	if not targets.is_empty():
 		var target_pos: Vector2 = targets.front().global_position
-		var target_rot: float =  global_position.direction_to(target_pos).angle()
-		rotation = lerp_angle(rotation, target_rot, rot_speed * delta)
+		var xpto = (target_pos - global_position).normalized().x
+		#body_rotate
+		if xpto > 0:
+			get_parent().scale.x = -1
+		else: 
+			get_parent().scale.x = 1
 
 
 func should_shoot() -> bool:
-	return can_shoot and lookahead.is_colliding()
+	return can_shoot and not targets.is_empty()
 
 
 func shoot() -> void:
@@ -61,7 +70,8 @@ func is_objective_in_range() -> bool:
 	
 func _instantiate_projectile(_position: Vector2, target: Node2D) -> void:
 	var projectile: Projectile = projectile_type.instantiate()
-	projectile.start(_position, rotation, projectile_speed, projectile_damage, target)
+	var rot = _position.direction_to(target.global_position + Vector2(0,-300)).angle()
+	projectile.start(_position, rot, projectile_speed, projectile_damage, target)
 	projectile.collision_mask = $Detector.collision_mask
 	if map: 
 		map.add_child(projectile)
