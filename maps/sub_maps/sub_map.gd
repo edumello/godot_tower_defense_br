@@ -39,3 +39,8 @@ func start_map() -> void:
 	map_state = true
 	map_started.emit(self)
 
+
+func get_activate_background() -> TextureRect:
+	if background_d.visible :
+		return background_d
+	return background_l

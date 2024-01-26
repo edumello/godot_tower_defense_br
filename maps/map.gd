@@ -3,7 +3,7 @@ extends Node2D
 @export var starting_money := 5000
 
 @onready var background: TextureRect = $SubMaps/Map1/BackgroundD
-@onready var camera: Camera2D = $Camera2D as Camera2D
+@onready var camera := $Camera2D as CameraMap
 @onready var objective := $Objective as Objective
 @onready var spawner := $Spawner as Spawner
 @onready var sub_maps := $SubMaps as Node2D
@@ -96,7 +96,8 @@ func _on_map_restored(sub_map: SubMap) -> void:
 		actual_map = maps.pop_front() as SubMap
 		actual_map.start_map()
 		_resize_camera(int(actual_map.map_name))
-
+		var new_camera_center = actual_map.global_position + actual_map.get_activate_background().size/2
+		camera.pan_to_area(new_camera_center)
 
 func update_tower_preview() -> void:
 	var mouse_position = get_global_mouse_position()

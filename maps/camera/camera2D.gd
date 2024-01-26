@@ -1,3 +1,4 @@
+class_name CameraMap
 extends Camera2D
 
 @export var min_zoom: float = 0.0
@@ -8,6 +9,8 @@ extends Camera2D
 
 @onready var target_zoom: float = zoom.x
 @onready var hud: HUD = $HUD
+
+var desirable_location : Vector2
 
 
 #func _process(event: InputEvent) -> void:
@@ -35,6 +38,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("pan"):
 		pan_map_with_mouse()
+		
+	if desirable_location:
+		if desirable_location != position:
+			_pan_to_area()
 
 func pan_map_with_mouse():
 	var ref = get_viewport().get_mouse_position()
@@ -44,7 +51,12 @@ func pan_map_with_mouse():
 
 
 func pan_to_area(area: Vector2) -> void:
-	pass
+	desirable_location = area
+
+func _pan_to_area():
+	position.x = desirable_location.x
+	position.y = desirable_location.y
+	#pass
 
 
 func _physics_process(delta: float) -> void:

@@ -106,9 +106,11 @@ layer_0/tile_data = PackedInt32Array(786436, 65537, 1, 786435, 65537, 1, 786437,
 map_name = "01"
 
 [node name="BackgroundD" parent="SubMaps/Map1" index="0"]
+visible = true
 texture = SubResource("CompressedTexture2D_m5mtp")
 
 [node name="BackgroundL" parent="SubMaps/Map1" index="1"]
+visible = true
 texture = SubResource("CompressedTexture2D_ncgsi")
 
 [node name="Map2" parent="SubMaps" instance=ExtResource("2_yx4g7")]
@@ -116,9 +118,11 @@ position = Vector2(2478, 1423)
 map_name = "02"
 
 [node name="BackgroundD" parent="SubMaps/Map2" index="0"]
+visible = true
 texture = ExtResource("3_2u0xo")
 
 [node name="BackgroundL" parent="SubMaps/Map2" index="1"]
+visible = true
 texture = ExtResource("4_yclc4")
 
 [node name="Map3" parent="SubMaps" instance=ExtResource("2_yx4g7")]
@@ -126,9 +130,11 @@ position = Vector2(4958, 2855)
 map_name = "03"
 
 [node name="BackgroundD" parent="SubMaps/Map3" index="0"]
+visible = true
 texture = ExtResource("5_p72m7")
 
 [node name="BackgroundL" parent="SubMaps/Map3" index="1"]
+visible = true
 texture = ExtResource("6_fxf7s")
 
 [node name="Map4" parent="SubMaps" instance=ExtResource("2_yx4g7")]
@@ -149,6 +155,7 @@ scale = Vector2(0.92, 0.92)
 texture = ExtResource("8_xuu4o")
 
 [node name="BackgroundL" parent="SubMaps/Map4" index="1"]
+visible = true
 texture = ExtResource("8_iyq35")
 
 [node name="Objective" parent="." instance=ExtResource("3_tj0ji")]
