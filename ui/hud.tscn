@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://hsc2jnynioof" path="res://ui/pause.tscn" id="8_fljc5"]
 [ext_resource type="Texture2D" uid="uid://b2an7vc8kfodp" path="res://assets/ui/turret_menu/Indio_Top0000 (Custom).png" id="9_6vkmk"]
 [ext_resource type="PackedScene" uid="uid://on0t7jue0ag0" path="res://ui/game_over.tscn" id="9_ijvta"]
-[ext_resource type="Texture2D" uid="uid://d0cm7ixe1bi3h" path="res://assets/ui/turret_menu/red_circle_cross.png" id="10_0yidp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu4ar"]
 
@@ -25,6 +24,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vheh5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olmli"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3wyai"]
+load_path = "res://.godot/imported/red_circle_cross.png-47d064bee7e744c2e7bed9abca42f20a.ctex"
 
 [node name="HUD" type="CanvasLayer"]
 layer = 5
@@ -230,7 +232,7 @@ offset_bottom = 66.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_numc5")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_vheh5")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_olmli")
-icon = ExtResource("10_0yidp")
+icon = SubResource("CompressedTexture2D_3wyai")
 icon_alignment = 1
 
 [node name="Menus" type="Control" parent="."]

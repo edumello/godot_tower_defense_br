@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://52vs1uanf3q6"]
 
-[ext_resource type="PackedScene" uid="uid://qqvmgvtuqqx0" path="res://entities/projectiles/shell/shell.tscn" id="1_0qyq7"]
+[ext_resource type="PackedScene" uid="uid://c7emb8w7nldom" path="res://entities/projectiles/projectile.tscn" id="1_0qyq7"]
 [ext_resource type="Texture2D" uid="uid://dhejfnuw1ue2b" path="res://assets/projectiles/arrow/arrow.png" id="2_yuadb"]
 [ext_resource type="AudioStream" uid="uid://drftfdbw2gw0w" path="res://assets/sounds/new_sounds/Medieval Weapons Sound Effects - Whack02.mp3" id="3_exmsa"]
 
@@ -35,6 +35,7 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_w0q42")
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
@@ -43,8 +44,6 @@ shape = SubResource("CapsuleShape2D_jmfo2")
 [node name="HitVfx" parent="." index="2"]
 visible = true
 sprite_frames = SubResource("SpriteFrames_l5di7")
-frame = 0
-frame_progress = 0.0
 
 [node name="HitSound" parent="." index="3"]
 stream = ExtResource("3_exmsa")

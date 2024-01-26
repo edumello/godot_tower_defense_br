@@ -94,7 +94,6 @@ projectile_damage = 1
 [node name="Gun" parent="Shooter" index="0"]
 position = Vector2(-67, -33)
 sprite_frames = SubResource("SpriteFrames_2p5b8")
-animation = &"die"
 offset = Vector2(-36.0074, 41.1534)
 
 [node name="Muzzle" parent="Shooter/Gun" index="0"]
@@ -103,7 +102,6 @@ position = Vector2(-197, 12)
 [node name="MuzzleFlash" parent="Shooter" index="1"]
 position = Vector2(-135, -2)
 sprite_frames = SubResource("SpriteFrames_gh565")
-animation = &"shoot"
 
 [node name="ShootSound" parent="Shooter" index="2"]
 stream = ExtResource("9_mvr7w")
@@ -116,10 +114,7 @@ top_level = true
 z_index = 100
 target_position = Vector2(-1050, 0)
 
-[node name="Explosion" parent="." index="3"]
-position = Vector2(-1, -244)
-
-[node name="UI" parent="." index="4"]
+[node name="UI" parent="." index="3"]
 visible = false
 
 [editable path="Shooter"]

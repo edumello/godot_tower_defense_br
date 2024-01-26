@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://hsc2jnynioof"]
+[gd_scene load_steps=4 format=3 uid="uid://hsc2jnynioof"]
 
 [ext_resource type="Script" path="res://ui/pause.gd" id="1_2c1mw"]
-[ext_resource type="Texture2D" uid="uid://br07nm61tm6wi" path="res://assets/ui/menu/pause.png" id="1_d5ijb"]
 
 [sub_resource type="Animation" id="Animation_epdbq"]
 resource_name = "show"
@@ -53,10 +52,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="TextureRect" parent="Sections"]
+[node name="Title" type="Label" parent="Sections"]
 layout_mode = 2
-texture = ExtResource("1_d5ijb")
-stretch_mode = 5
+theme_override_font_sizes/font_size = 141
+text = "PAUSE"
 
 [node name="Resume" type="Button" parent="Sections"]
 layout_mode = 2

@@ -13,6 +13,7 @@ config_version=5
 config/name="Tower Defense 01"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.215686, 0.505882, 0.360784, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -66,3 +67,7 @@ avoidance/layer_2="air"
 
 2d/default_edge_connection_margin=20.0
 2d/default_link_connection_radius=20.0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.215686, 0.505882, 0.360784, 1)

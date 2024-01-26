@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bedcxuv34eu26"]
 
 [ext_resource type="Script" path="res://ui/tower_popup.gd" id="1_kyghu"]
-[ext_resource type="Texture2D" uid="uid://d0cm7ixe1bi3h" path="res://assets/ui/turret_menu/red_circle_cross.png" id="2_5ixq8"]
 [ext_resource type="Texture2D" uid="uid://b2an7vc8kfodp" path="res://assets/ui/turret_menu/Indio_Top0000 (Custom).png" id="2_p7ahu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mii8v"]
@@ -15,6 +14,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vheh5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olmli"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3wyai"]
+load_path = "res://.godot/imported/red_circle_cross.png-47d064bee7e744c2e7bed9abca42f20a.ctex"
 
 [node name="TowerPopup" type="CanvasLayer"]
 script = ExtResource("1_kyghu")
@@ -105,10 +107,7 @@ offset_bottom = 66.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_numc5")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_vheh5")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_olmli")
-icon = ExtResource("2_5ixq8")
+icon = SubResource("CompressedTexture2D_3wyai")
 icon_alignment = 1
 
-[connection signal="pressed" from="Background/Panel/Towers/Gatling/Button" to="." method="_on_button_pressed" binds= ["gatling"]]
-[connection signal="pressed" from="Background/Panel/Towers/Cannon/Button" to="." method="_on_button_pressed" binds= ["cannon"]]
-[connection signal="pressed" from="Background/Panel/Towers/Missile/Button" to="." method="_on_button_pressed" binds= ["missile"]]
 [connection signal="pressed" from="Background/Panel/Close" to="." method="_on_close_pressed"]
