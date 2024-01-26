@@ -43,6 +43,10 @@ func pan_map_with_mouse():
 	fixed_toggle_point = ref
 
 
+func pan_to_area(area: Vector2) -> void:
+	pass
+
+
 func _physics_process(delta: float) -> void:
 	zoom.x = lerp(zoom.x, target_zoom, zoom_rate * delta)
 	zoom.y = lerp(zoom.y, target_zoom, zoom_rate * delta)

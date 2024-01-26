@@ -157,6 +157,7 @@ health = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("4_83ee1")]
 position = Vector2(2096, 1817)
+zoom = Vector2(0.4, 0.4)
 min_zoom = 0.4
 
 [node name="Spawner" parent="." instance=ExtResource("5_fkdgc")]
